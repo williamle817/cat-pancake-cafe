@@ -41,11 +41,11 @@ var order_textures = {
 func _ready():
 	randomize()
 	show_hotbar("Empty")
+	await waiting_order()
 	spawn_new_order()
 	update_ui()
 
 func _process(delta):
-	print("Timer:", order_timer)
 	if current_order != "":
 		order_timer -= delta
 		update_ui()
@@ -78,6 +78,20 @@ func show_order_icon(order_name: String):
 func hide_order_icon():
 	order_icon.visible = false
 
+func hide_customer():
+	customer_node.visible = false
+
+func show_customer():
+	customer_node.visible = true
+
+func waiting_order():
+	hide_customer()
+	var rand_time = randi() % 3 + 2.5
+	current_order = ""
+	update_ui()
+	await get_tree().create_timer(rand_time).timeout
+	show_customer()
+	
 # =================== HOTBAR ===================
 func show_hotbar(item_name: String):
 	if hotbar_textures.has(item_name):
@@ -161,7 +175,9 @@ func serve_order():
 func reset_order():
 	prepared_item = ""
 	current_order = ""
-	update_ui()
+
+	await waiting_order()	
+	
 	spawn_new_order()
 
 # =================== UI ===================
