@@ -5,6 +5,9 @@ extends Node2D
 	$CanvasLayer/Tutorial,
 	$CanvasLayer/MainGame,
 ]
+@onready var level1_button = $CanvasLayer/LevelOne
+@onready var level2_button = $CanvasLayer/LevelTwo
+@onready var level3_button = $CanvasLayer/LevelThree
 @onready var back_button = $CanvasLayer/Back
 
 # Musics
@@ -20,9 +23,22 @@ func _ready():
 	back_button.pressed.connect(_on_back_pressed)
 	back_button.mouse_entered.connect(_on_back_hover)
 	back_button.mouse_exited.connect(_on_back_exit)
-
-	#back_button.mouse_entered.connect(_on_button_hovered)
-
+	
+	# Connect level_1 butoon signals
+	level1_button.pressed.connect(_on_level1_pressed)
+	level1_button.mouse_entered.connect(_on_level1_hover)
+	level1_button.mouse_exited.connect(_on_level1_exit)
+	
+	# Connect level_1 butoon signals
+	level2_button.pressed.connect(_on_level2_pressed)
+	level2_button.mouse_entered.connect(_on_level2_hover)
+	level2_button.mouse_exited.connect(_on_level2_exit)
+	
+	# Connect level_1 butoon signals
+	level3_button.pressed.connect(_on_level3_pressed)
+	level3_button.mouse_entered.connect(_on_level3_hover)
+	level3_button.mouse_exited.connect(_on_level3_exit)
+	
 	#for i in range(level_buttons.size()):
 		#var button = level_buttons[i]
 		#button.disabled = false
@@ -52,3 +68,42 @@ func _on_back_hover():
 func _on_back_exit():
 	back_button.modulate = Color(1, 1, 1)
 	back_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
+	
+func _on_level1_pressed():
+	# Go back to Main Menu
+	get_tree().change_scene_to_file("res://MainGame.tscn")
+	
+func _on_level1_hover():
+	if hover_sound != null: hover_sound.play()
+	level1_button.modulate = Color(1, 1, 0.7)
+	level1_button.scale = Vector2(HOVER_SCALE, HOVER_SCALE)
+
+func _on_level1_exit():
+	level1_button.modulate = Color(1, 1, 1)
+	level1_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
+
+func _on_level2_pressed():
+	# Go back to Main Menu
+	get_tree().change_scene_to_file("res://MainGame.tscn")
+	
+func _on_level2_hover():
+	if hover_sound != null: hover_sound.play()
+	level2_button.modulate = Color(1, 1, 0.7)
+	level2_button.scale = Vector2(HOVER_SCALE, HOVER_SCALE)
+
+func _on_level2_exit():
+	level2_button.modulate = Color(1, 1, 1)
+	level2_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
+	
+func _on_level3_pressed():
+	# Go back to Main Menu
+	get_tree().change_scene_to_file("res://MainGame.tscn")
+	
+func _on_level3_hover():
+	if hover_sound != null: hover_sound.play()
+	level3_button.modulate = Color(1, 1, 0.7)
+	level3_button.scale = Vector2(HOVER_SCALE, HOVER_SCALE)
+
+func _on_level3_exit():
+	level3_button.modulate = Color(1, 1, 1)
+	level3_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
