@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameManager
 
 # =================== GAME STATE ===================
 var coins: int = 10
@@ -44,6 +45,7 @@ func _ready():
 	update_ui()
 
 func _process(delta):
+	print("Timer:", order_timer)
 	if current_order != "":
 		order_timer -= delta
 		if order_timer <= 0:

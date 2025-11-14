@@ -34,6 +34,10 @@ size = Vector2(61, 164)
 
 [node name="MainGame" type="Node2D"]
 
+[node name="GameManager" type="Node2D" parent="."]
+position = Vector2(-43, 55)
+script = ExtResource("1_3tbxw")
+
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(577.5, 332.5)
 scale = Vector2(0.724375, 0.739955)
@@ -190,10 +194,6 @@ offset_right = 808.0
 offset_bottom = 577.0
 texture_normal = ExtResource("15_yphxy")
 stretch_mode = 5
-
-[node name="GameManager" type="Node2D" parent="."]
-position = Vector2(-43, 55)
-script = ExtResource("1_3tbxw")
 
 [connection signal="pressed" from="CanvasLayer/DrinkMenu/CoffeeButton" to="DrinkMachine" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrinkMenu/TeaButton" to="DrinkMachine" method="_on_tea_button_pressed"]
