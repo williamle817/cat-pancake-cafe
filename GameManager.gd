@@ -1,6 +1,16 @@
 extends Node2D
 class_name GameManager
 
+# Buttons
+@onready var back_button = get_node("../CanvasLayer/Back")
+
+# Musics
+@onready var hover_sound = get_node("../CanvasLayer/HoverSound")
+
+# Hover scale factor
+const HOVER_SCALE = 0.30
+const NORMAL_SCALE = 0.25
+
 # =================== GAME STATE ===================
 var coins: int = 10
 var current_order: String = ""
@@ -37,8 +47,28 @@ var order_textures = {
 	"Blueberry Pancake": load("res://Orders/BlueberryPancake.png")
 }
 
+# =================== BUTTONS ===================
+func _on_back_pressed():
+	# Go back to Main Menu
+	get_tree().change_scene_to_file("res://LevelSelect.tscn")
+	
+func _on_back_hover():
+	if hover_sound != null: hover_sound.play()
+	back_button.modulate = Color(1, 1, 0.7)
+	back_button.scale = Vector2(HOVER_SCALE, HOVER_SCALE)
+
+func _on_back_exit():
+	back_button.modulate = Color(1, 1, 1)
+	back_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
+	
+func connect_button():
+	back_button.pressed.connect(_on_back_pressed)
+	back_button.mouse_entered.connect(_on_back_hover)
+	back_button.mouse_exited.connect(_on_back_exit)
+
 # =================== GAME LOOP ===================
 func _ready():
+	connect_button()
 	randomize()
 	show_hotbar("Empty")
 	await waiting_order()
