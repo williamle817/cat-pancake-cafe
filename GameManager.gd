@@ -7,7 +7,7 @@ var current_order: String = ""
 var prepared_item: String = ""
 var preparing_item: bool = false
 var order_timer: float = 0.0
-var max_order_time: float = 60.0
+var max_order_time: float = 30.0
 
 var orders = ["Strawberry Pancake", "Blueberry Pancake", "Pancake", "Tea", "Coffee"]
 
