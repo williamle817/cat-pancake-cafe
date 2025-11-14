@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://vksmk2oojmon"]
+
+[ext_resource type="AudioStream" uid="uid://bycuxi5r276ov" path="res://music/tvari-tokyo-cafe-159065.mp3" id="1_1a72i"]
+
+[node name="MusicPlayer" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1a72i")
+autoplay = true
+parameters/looping = true
