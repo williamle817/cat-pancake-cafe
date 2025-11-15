@@ -8,6 +8,7 @@ class_name GameManager
 @onready var hover_sound = get_node("../CanvasLayer/HoverSound")
 @onready var click_sound = get_node("../CanvasLayer/ClickSound")
 @onready var interact_sound = get_node("../CanvasLayer/InteractiveSound")
+@onready var ding_sound = get_node("../CanvasLayer/Ding")
 
 # Hover scale factor
 const HOVER_SCALE = 0.30
@@ -57,7 +58,10 @@ func click_sound_play(timeout):
 func interact_sound_play(timeout):
 	interact_sound.play()
 	await get_tree().create_timer(timeout).timeout
-	
+
+func ding_sound_play(timeout):
+	ding_sound.play()
+	await get_tree().create_timer(timeout).timeout
 # =================== BUTTONS ===================
 func _on_back_pressed():
 	# Go back to Main Menu
@@ -100,13 +104,14 @@ func _process(delta):
 
 # =================== ORDER SPAWNING ===================
 func spawn_new_order():
-	if preparing_item:
-		return
+	#if preparing_item: // THIS IS A BUG!
+		#return
 	var rand_index = randi() % orders.size()
 	current_order = orders[rand_index]
 	order_timer = max_order_time
 	prepared_item = ""
 	show_order_icon(current_order)
+	ding_sound_play(0)
 	update_ui()
 	print("New order spawned:", current_order)
 
