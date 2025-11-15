@@ -38,6 +38,7 @@ func _on_body_exited(body):
 func _input_event(viewport, event, shape_idx):
 	if player_in_area and event.is_action_pressed("ui_accept"):
 		if topping_menu != null:
+			game_manager.interact_sound_play(0)
 			topping_menu.visible = true
 			topping_menu.grab_focus()
 
@@ -46,10 +47,12 @@ func _on_strawberry_pressed():
 	if topping_menu != null:
 		topping_menu.visible = false
 	if game_manager != null:
+		game_manager.interact_sound_play(0)
 		game_manager.add_topping("Strawberry Pancake")
 
 func _on_blueberry_pressed():
 	if topping_menu != null:
 		topping_menu.visible = false
 	if game_manager != null:
+		game_manager.interact_sound_play(0)
 		game_manager.add_topping("Blueberry Pancake")

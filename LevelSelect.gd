@@ -12,6 +12,7 @@ extends Node2D
 
 # Musics
 @onready var hover_sound = $CanvasLayer/HoverSound
+@onready var click_sound = $CanvasLayer/ClickSound
 
 # Hover scale factor
 const HOVER_SCALE = 1.1
@@ -56,8 +57,14 @@ func _ready():
 	## Load the corresponding level scene
 	#get_tree().change_scene_to_file("res://Level%d.tscn" % level_num)
 #
+
+func click_sound_play(timeout):
+	click_sound.play()
+	await get_tree().create_timer(timeout).timeout
+	
 func _on_back_pressed():
 	# Go back to Main Menu
+	await click_sound_play(0.25)
 	get_tree().change_scene_to_file("res://MainMenu.tscn")
 	
 func _on_back_hover():
@@ -71,6 +78,8 @@ func _on_back_exit():
 	
 func _on_level1_pressed():
 	# Go back to Main Menu
+	#if click_sound != null: 
+	await click_sound_play(0.1)
 	get_tree().change_scene_to_file("res://MainGame.tscn")
 	
 func _on_level1_hover():
@@ -84,6 +93,7 @@ func _on_level1_exit():
 
 func _on_level2_pressed():
 	# Go back to Main Menu
+	await click_sound_play(0.1)
 	get_tree().change_scene_to_file("res://MainGame.tscn")
 	
 func _on_level2_hover():
@@ -97,6 +107,7 @@ func _on_level2_exit():
 	
 func _on_level3_pressed():
 	# Go back to Main Menu
+	await click_sound_play(0.1)
 	get_tree().change_scene_to_file("res://MainGame.tscn")
 	
 func _on_level3_hover():

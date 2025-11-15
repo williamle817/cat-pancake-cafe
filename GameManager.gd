@@ -6,6 +6,8 @@ class_name GameManager
 
 # Musics
 @onready var hover_sound = get_node("../CanvasLayer/HoverSound")
+@onready var click_sound = get_node("../CanvasLayer/ClickSound")
+@onready var interact_sound = get_node("../CanvasLayer/InteractiveSound")
 
 # Hover scale factor
 const HOVER_SCALE = 0.30
@@ -47,9 +49,19 @@ var order_textures = {
 	"Blueberry Pancake": load("res://Orders/BlueberryPancake.png")
 }
 
+# =================== MUSIC ===================
+func click_sound_play(timeout):
+	click_sound.play()
+	await get_tree().create_timer(timeout).timeout
+
+func interact_sound_play(timeout):
+	interact_sound.play()
+	await get_tree().create_timer(timeout).timeout
+	
 # =================== BUTTONS ===================
 func _on_back_pressed():
 	# Go back to Main Menu
+	await click_sound_play(0.1)
 	get_tree().change_scene_to_file("res://LevelSelect.tscn")
 	
 func _on_back_hover():

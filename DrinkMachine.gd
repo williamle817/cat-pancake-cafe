@@ -38,6 +38,7 @@ func _on_body_exited(body):
 func _input_event(viewport, event, shape_idx):
 	if player_in_area and event.is_action_pressed("ui_accept"):
 		if drink_menu != null:
+			game_manager.interact_sound_play(0)
 			drink_menu.visible = true
 			drink_menu.grab_focus()
 
@@ -46,10 +47,12 @@ func _on_tea_button_pressed():
 	if drink_menu != null:
 		drink_menu.visible = false
 	if game_manager != null:
+		game_manager.interact_sound_play(0)
 		game_manager.start_tea()
 
 func _on_coffee_button_pressed():
 	if drink_menu != null:
 		drink_menu.visible = false
 	if game_manager != null:
+		game_manager.interact_sound_play(0)
 		game_manager.start_coffee()

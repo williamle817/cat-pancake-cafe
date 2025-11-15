@@ -25,4 +25,5 @@ func _process(_delta):
 		print("Stove interaction detected!")
 		print("Using Stove")
 		if game_manager != null:
+			game_manager.interact_sound_play(0)
 			game_manager.cook_pancake()  
