@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dg7sn7yc8soxw"]
+[gd_scene load_steps=26 format=3 uid="uid://dg7sn7yc8soxw"]
 
 [ext_resource type="Script" uid="uid://btau76gnr6hu0" path="res://GameManager.gd" id="1_3tbxw"]
 [ext_resource type="Texture2D" uid="uid://c2lm2ud7c4wf5" path="res://Sprites/backgroundforgame.jpg" id="1_8qpgq"]
@@ -20,7 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://dornhsqcestf3" path="res://music/menu-button-88360.mp3" id="18_ma1re"]
 [ext_resource type="AudioStream" uid="uid://rdcr10u85oy7" path="res://music/click-button.mp3" id="19_28psf"]
 [ext_resource type="AudioStream" uid="uid://dk814djc2e7d1" path="res://music/interactive-sounds.mp3" id="20_a6adi"]
-[ext_resource type="AudioStream" uid="uid://c36upwixidwl5" path="res://music/Ding.mp3" id="21_va67g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0v7qb"]
 size = Vector2(180, 133)
@@ -217,10 +216,6 @@ stream = ExtResource("19_28psf")
 
 [node name="InteractiveSound" type="AudioStreamPlayer2D" parent="CanvasLayer"]
 stream = ExtResource("20_a6adi")
-
-[node name="Ding" type="AudioStreamPlayer2D" parent="CanvasLayer"]
-stream = ExtResource("21_va67g")
-volume_db = -20.0
 
 [connection signal="pressed" from="CanvasLayer/DrinkMenu/CoffeeButton" to="DrinkMachine" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DrinkMenu/TeaButton" to="DrinkMachine" method="_on_tea_button_pressed"]

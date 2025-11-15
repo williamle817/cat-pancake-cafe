@@ -6,6 +6,7 @@ extends Node2D
 
 # Hover sound
 @onready var hover_sound = $CanvasLayer/HoverSound
+@onready var click_sound = $CanvasLayer/ClickSound
 
 # Music
 @onready var music = $MusicPlayer
@@ -44,10 +45,15 @@ func _ready():
 	# Play music
 	if music != null and not music.playing:
 		music.play()
+		
+func click_sound_play(timeout):
+	click_sound.play()
+	await get_tree().create_timer(timeout).timeout
 
 
 # ================== Start Button ==================
 func _on_start_pressed():
+	await click_sound_play(0.1)
 	get_tree().change_scene_to_file("res://LevelSelect.tscn")
 
 func _on_start_hover():
@@ -61,6 +67,7 @@ func _on_start_exit():
 
 # ================== Quit Button ==================
 func _on_quit_pressed():
+	await click_sound_play(0.1)
 	get_tree().quit()
 
 func _on_quit_hover():
