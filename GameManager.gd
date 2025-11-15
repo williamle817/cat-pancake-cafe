@@ -1,16 +1,84 @@
 extends Node2D
+class_name GameManager
 
-# Game variables
-var score : int = 0
-var level : int = 1
-var orders = ["Chocolate Pancake", "Strawberry Pancake", "Blueberry Pancake"]
+# Buttons
+@onready var back_button = get_node("../CanvasLayer/Back")
 
-# UI node references
-@onready var serve_button = get_node_or_null("../CanvasLayer/ServeButton")
-@onready var order_label  = get_node_or_null("../CanvasLayer/OrderLabel")
-@onready var score_label  = get_node_or_null("../CanvasLayer/ScoreLabel")
-@onready var cat_label    = get_node_or_null("../CanvasLayer/CatLabel")
+# Musics
+@onready var hover_sound = get_node("../CanvasLayer/HoverSound")
+@onready var click_sound = get_node("../CanvasLayer/ClickSound")
+@onready var interact_sound = get_node("../CanvasLayer/InteractiveSound")
 
+# Hover scale factor
+const HOVER_SCALE = 0.30
+const NORMAL_SCALE = 0.25
+
+# =================== GAME STATE ===================
+var coins: int = 10
+var current_order: String = ""
+var prepared_item: String = ""
+var preparing_item: bool = false
+var order_timer: float = 0.0
+var max_order_time: float = 30.0
+
+var orders = ["Strawberry Pancake", "Blueberry Pancake", "Pancake", "Tea", "Coffee"]
+
+# =================== NODE REFERENCES ===================
+@onready var order_label  = get_node("../CanvasLayer/OrderLabel")
+@onready var coins_label  = get_node("../CanvasLayer/CoinsLabel")
+@onready var customer_node = get_node("../Customer")
+@onready var order_icon = customer_node.get_node("OrderIcon") as Sprite2D
+@onready var player_node   = get_node("../Player")
+@onready var hotbar_icon = get_node("../CanvasLayer/HotbarSlot")
+
+# =================== HOTBAR TEXTURES ===================
+var hotbar_textures = {
+	"Empty": load("res://Hotbar/EmptyHotBar.png"),
+	"Pancake": load("res://Hotbar/PancakeHotBar.png"),
+	"Strawberry Pancake": load("res://Hotbar/StrawberryHotBar.png"),
+	"Blueberry Pancake": load("res://Hotbar/BlueberryHotBar.png"),
+	"Tea": load("res://Hotbar/TeaHotBar.png"),
+	"Coffee": load("res://Hotbar/CoffeeHotBar.png")
+}
+
+var order_textures = {
+	"Tea": load("res://Orders/Tea.png"),
+	"Coffee": load("res://Orders/Coffee.png"),
+	"Pancake": load("res://Orders/Pancake.png"),
+	"Strawberry Pancake": load("res://Orders/StrawberryPancake.png"),
+	"Blueberry Pancake": load("res://Orders/BlueberryPancake.png")
+}
+
+# =================== MUSIC ===================
+func click_sound_play(timeout):
+	click_sound.play()
+	await get_tree().create_timer(timeout).timeout
+
+func interact_sound_play(timeout):
+	interact_sound.play()
+	await get_tree().create_timer(timeout).timeout
+	
+# =================== BUTTONS ===================
+func _on_back_pressed():
+	# Go back to Main Menu
+	await click_sound_play(0.1)
+	get_tree().change_scene_to_file("res://LevelSelect.tscn")
+	
+func _on_back_hover():
+	if hover_sound != null: hover_sound.play()
+	back_button.modulate = Color(1, 1, 0.7)
+	back_button.scale = Vector2(HOVER_SCALE, HOVER_SCALE)
+
+func _on_back_exit():
+	back_button.modulate = Color(1, 1, 1)
+	back_button.scale = Vector2(NORMAL_SCALE, NORMAL_SCALE)
+	
+func connect_button():
+	back_button.pressed.connect(_on_back_pressed)
+	back_button.mouse_entered.connect(_on_back_hover)
+	back_button.mouse_exited.connect(_on_back_exit)
+
+# =================== GAME LOOP ===================
 func _ready():
 	randomize()  # ensure different orders each run
 
