@@ -267,6 +267,7 @@ func serve_order():
 		print("Order served successfully! Coins earned:", coins_earned)
 	else:
 		coins -= 5
+		prepared_item = ""
 		print("Wrong order! Coins deducted: 5")
 		if await check_game_over(): return
 

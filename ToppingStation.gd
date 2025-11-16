@@ -27,12 +27,12 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		player_in_area = true
-		print("Player in range of ToppingStation")
+		#print("Player in range of ToppingStation")
 
 func _on_body_exited(body):
 	if body.name == "Player":
 		player_in_area = false
-		print("Player left ToppingStation")
+		#print("Player left ToppingStation")
 
 # ======== CLICK DETECTION ========
 func _input_event(viewport, event, shape_idx):

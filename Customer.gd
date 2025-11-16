@@ -21,7 +21,8 @@ func _on_body_exited(body):
 func _process(_delta):
 	if player_in_area and Input.is_action_just_pressed("ui_accept"):
 		if game_manager != null:
-			if game_manager.prepared_item == "": return #FIXED BUG
-			print("Serving customer")
+			if game_manager.prepared_item == "": 
+				return #FIXED BUG
+			print("Serving customer:" + game_manager.prepared_item)
 			game_manager.ding_sound_play()
 			game_manager.serve_order()
