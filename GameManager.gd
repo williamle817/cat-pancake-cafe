@@ -67,10 +67,9 @@ func interact_sound_play(timeout):
 	interact_sound.play()
 	await get_tree().create_timer(timeout).timeout
 
-func ding_sound_play(timeout):
+func ding_sound_play():
 	bell_sound.stop()
 	ding_sound.play()
-	await get_tree().create_timer(timeout).timeout
 	
 	
 # =================== BUTTONS ===================
@@ -116,10 +115,9 @@ func _process(delta):
 		update_ui()
 		if order_timer <= 0:
 			print("Order expired!")
-			coins -= 2
+			coins -= 4
 			hide_order_icon()
-			check_game_over()
-			reset_order()
+			if !check_game_over(): reset_order()
 
 # =================== LEVEL SETTING ===================
 func init_level():
@@ -148,7 +146,7 @@ func spawn_new_order():
 	order_timer = max_order_time
 	prepared_item = ""
 	show_order_icon(current_order)
-	ding_sound_play(0)
+	ding_sound_play()
 	update_ui()
 	print("New order spawned:", current_order)
 
@@ -256,8 +254,8 @@ func serve_order():
 		coins += coins_earned
 		print("Order served successfully! Coins earned:", coins_earned)
 	else:
-		coins -= 3
-		print("Wrong order! Coins deducted: 3")
+		coins -= 5
+		print("Wrong order! Coins deducted: 5")
 		check_game_over()
 
 	show_hotbar("Empty")
@@ -267,7 +265,7 @@ func serve_order():
 func reset_order():
 	prepared_item = ""
 	current_order = ""
-	await ding_sound_play(0)
+	await ding_sound_play()
 	await waiting_order()	
 	
 	spawn_new_order()
@@ -287,3 +285,5 @@ func check_game_over():
 	if coins < 0 || round_timer <= 0:
 		print("Game Over!")
 		get_tree().change_scene_to_file("res://LevelSelect.tscn")
+		return true
+	return false
