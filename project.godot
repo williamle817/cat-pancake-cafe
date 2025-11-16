@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MusicPlayer="*res://MusicPlayer.tscn"
-Global="*res://Global.gd"
+MusicPlayer="*res://Global/MusicPlayer.tscn"
+Global="*res://Global/Global.gd"
 Transition="*res://Global/Transition.tscn"
 
 [editor]

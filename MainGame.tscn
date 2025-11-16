@@ -248,11 +248,11 @@ volume_db = -15.0
 
 [node name="Bell" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("23_6brkw")
-volume_db = -20.0
+volume_db = -22.0
 
 [node name="Fire" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("24_cgwad")
-volume_db = -25.0
+volume_db = -20.0
 
 [node name="Drink" type="AudioStreamPlayer" parent="CanvasLayer"]
 stream = ExtResource("25_0igvr")
