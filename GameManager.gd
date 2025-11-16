@@ -117,7 +117,8 @@ func _process(delta):
 			print("Order expired!")
 			coins -= 4
 			hide_order_icon()
-			if !check_game_over(): reset_order()
+			if !check_game_over(): 
+				reset_order()
 
 # =================== LEVEL SETTING ===================
 func init_level():
@@ -256,7 +257,7 @@ func serve_order():
 	else:
 		coins -= 5
 		print("Wrong order! Coins deducted: 5")
-		if check_game_over(): return
+		if await check_game_over(): return
 
 	show_hotbar("Empty")
 	hide_order_icon()
@@ -282,8 +283,16 @@ func update_ui():
 
 # =================== GAME OVER ===================
 func check_game_over():
-	if coins < 0 || round_timer <= 0:
-		print("Game Over!")
-		get_tree().change_scene_to_file("res://GameOver.tscn")
+	if coins < 0:
+		back_button.visible = false
+		order_label.visible = false
+		hotbar_icon.visible = false
+		Transition.fade_to_scene("res://GameOver.tscn")
+		return true
+	if round_timer <= 0:
+		back_button.visible = false
+		order_label.visible = false
+		hotbar_icon.visible = false
+		Transition.fade_to_scene("res://YouWin.tscn")
 		return true
 	return false

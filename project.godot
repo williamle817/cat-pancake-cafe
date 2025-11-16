@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 MusicPlayer="*res://MusicPlayer.tscn"
 Global="*res://Global.gd"
+Transition="*res://Global/Transition.tscn"
 
 [editor]
 
