@@ -154,7 +154,7 @@ func spawn_new_order():
 	
 	current_order = orders[rand_index]
 	order_timer = max_order_time
-	prepared_item = ""
+	#prepared_item = "" THIS IS A BUG IF WE LEAVE THIS LINE OF CODE HERE
 	show_order_icon(current_order)
 	ding_sound_play()
 	update_ui()
@@ -275,7 +275,7 @@ func serve_order():
 	reset_order()
 
 func reset_order():
-	prepared_item = ""
+	#prepared_item = "" THIS IS A BUG IF WE LEAVE THIS LINE OF CODE HERE
 	current_order = ""
 	await ding_sound_play()
 	await waiting_order()	
