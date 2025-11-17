@@ -4,6 +4,7 @@ extends Area2D
 
 # ======== NODES ========
 @onready var drink_menu = get_node_or_null("../CanvasLayer/DrinkMenu")
+@onready var topping_menu = get_node_or_null("../CanvasLayer/ToppingMenu")
 @onready var tea_button = get_node_or_null("../CanvasLayer/DrinkMenu/TeaButton")
 @onready var coffee_button = get_node_or_null("../CanvasLayer/DrinkMenu/CoffeeButton")
 @onready var game_manager = get_node_or_null("/root/MainGame/GameManager")
@@ -39,6 +40,7 @@ func _input_event(viewport, event, shape_idx):
 	if player_in_area and event.is_action_pressed("ui_accept"):
 		if drink_menu != null:
 			game_manager.interact_sound_play(0)
+			topping_menu.visible = false
 			drink_menu.visible = true
 			drink_menu.grab_focus()
 

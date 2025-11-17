@@ -19,16 +19,17 @@ const HOVER_SCALE = 0.30
 const NORMAL_SCALE = 0.25
 
 # =================== GAME STATE ===================
-var coins: int = 100
+var coins: int = 10
 var current_order: String = ""
 var prepared_item: String = ""
 var preparing_item: bool = false
 var order_timer: float = 0.0
 var max_order_time: float = 60.0
 var random_size = 3
-var round_timer = 1.0
+var round_timer = 90.0
 var played_countdown_sound = false
 var game_is_over = false
+var level1_index = 2
 
 var orders = ["Tea", "Coffee", "Pancake", "Strawberry Pancake", "Blueberry Pancake"]
 
@@ -148,11 +149,17 @@ func spawn_new_order():
 	#if preparing_item: // THIS IS A BUG!
 		#return
 	var rand_index = randi() % random_size
+	
 	if(Global.selected_level == 3 && rand_index <= 2):
 		var rand_num = randi() % 3
 		if(rand_num % 2 == 1):
 			if(rand_index <= 2): rand_index += 2
 	
+	if Global.selected_level == 1:
+			rand_index = level1_index
+			level1_index += 1
+			level1_index %= 3
+		
 	current_order = orders[rand_index]
 	order_timer = max_order_time
 	#prepared_item = "" THIS IS A BUG IF WE LEAVE THIS LINE OF CODE HERE

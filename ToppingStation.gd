@@ -3,6 +3,7 @@ extends Area2D
 @export var machine_type: String = "ToppingStation"
 
 # ======== NODES ========
+@onready var drink_menu = get_node_or_null("../CanvasLayer/DrinkMenu")
 @onready var topping_menu = get_node_or_null("../CanvasLayer/ToppingMenu")
 @onready var strawberry_button = get_node_or_null("../CanvasLayer/ToppingMenu/StrawberryButton")
 @onready var blueberry_button = get_node_or_null("../CanvasLayer/ToppingMenu/BlueberryButton")
@@ -39,6 +40,7 @@ func _input_event(viewport, event, shape_idx):
 	if player_in_area and event.is_action_pressed("ui_accept"):
 		if topping_menu != null:
 			game_manager.interact_sound_play(0)
+			drink_menu.visible = false
 			topping_menu.visible = true
 			topping_menu.grab_focus()
 
