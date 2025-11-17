@@ -9,6 +9,7 @@ extends Node2D
 @onready var level2_button = $CanvasLayer/LevelTwo
 @onready var level3_button = $CanvasLayer/LevelThree
 @onready var back_button = $CanvasLayer/Back
+@onready var coins_label = $CanvasLayer/CoinsLabel
 
 # Musics
 @onready var hover_sound = $CanvasLayer/HoverSound
@@ -39,8 +40,9 @@ func update_level_buttons():
 		level3_button.modulate = Color(0.5, 0.5, 0.5)
 	
 func _ready():
-	print("debug: ", Global.unlocked_levels)
 	update_level_buttons()
+	
+	#coins_label.text = str(Global.coins)
 
 	# Connect back button signals
 	back_button.pressed.connect(_on_back_pressed)
