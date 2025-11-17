@@ -15,8 +15,8 @@ func _ready():
 @onready var hover_sound = $CanvasLayer/HoverSound
 
 # Hover scale factor
-const HOVER_SCALE = 0.5
-const NORMAL_SCALE = 0.4
+const HOVER_SCALE = 1.1
+const NORMAL_SCALE = 1
 
 func click_sound_play(timeout):
 	click_sound.play()

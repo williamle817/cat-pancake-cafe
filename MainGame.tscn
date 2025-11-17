@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dg7sn7yc8soxw"]
+[gd_scene load_steps=34 format=3 uid="uid://dg7sn7yc8soxw"]
 
 [ext_resource type="Script" uid="uid://btau76gnr6hu0" path="res://GameManager.gd" id="1_3tbxw"]
 [ext_resource type="Texture2D" uid="uid://dqbwmp7vvadet" path="res://Sprites/backgroundforgame.jpg" id="1_8qpgq"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bu1gxxjoms5d6" path="res://Sprites/choose-your-brew.png" id="10_led80"]
 [ext_resource type="Texture2D" uid="uid://uvrrfmps3hyx" path="res://Sprites/coffee (1).png" id="11_mi4js"]
 [ext_resource type="Texture2D" uid="uid://dy6d4c0rkhpil" path="res://Sprites/tea (1).png" id="12_o3vwv"]
+[ext_resource type="Texture2D" uid="uid://51o65q6bmtpj" path="res://Sprites/new_stove.png" id="13_m6fch"]
 [ext_resource type="Texture2D" uid="uid://dr5i1rvjsguec" path="res://Sprites/yum-which-sweet-topping-do-you-want.png" id="13_mi4js"]
 [ext_resource type="Texture2D" uid="uid://d3r3csy7upglt" path="res://Sprites/strawberry.png" id="14_401ut"]
 [ext_resource type="Texture2D" uid="uid://c7nyanahajg5b" path="res://Sprites/blueberry.png" id="15_yphxy"]
@@ -60,7 +61,7 @@ scale = Vector2(0.24107106, 0.23812829)
 texture = ExtResource("3_aeu83")
 
 [node name="Coin" type="Sprite2D" parent="."]
-position = Vector2(991.0004, 51)
+position = Vector2(991.00006, 51)
 scale = Vector2(0.24107106, 0.23812829)
 texture = ExtResource("4_f21le")
 
@@ -150,6 +151,12 @@ vertical_alignment = 1
 position = Vector2(574.125, 582.75)
 scale = Vector2(0.157, 0.145)
 texture = ExtResource("9_o8l48")
+
+[node name="NewStove" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(884.9999, 174.00002)
+scale = Vector2(0.35, 0.318)
+texture = ExtResource("13_m6fch")
 
 [node name="DrinkMenu" type="Control" parent="CanvasLayer"]
 visible = false

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4wuxlnghgslt" path="res://Sprites/you-win.jpg" id="2_2wggh"]
 [ext_resource type="AudioStream" uid="uid://115isaeot5mh" path="res://music/click-button.mp3" id="3_kgjx4"]
 [ext_resource type="AudioStream" uid="uid://kjjs8rythkx5" path="res://music/menu-button-88360.mp3" id="4_7mjay"]
-[ext_resource type="Texture2D" uid="uid://col3hgksclg1i" path="res://Sprites/quit (2).png" id="5_1c8i8"]
+[ext_resource type="Texture2D" uid="uid://bapsn30hibba3" path="res://Sprites/continue.png" id="5_2wggh"]
 
 [node name="YouWin" type="Node2D"]
 script = ExtResource("1_2wggh")
@@ -24,10 +24,10 @@ stream = ExtResource("4_7mjay")
 volume_db = -20.0
 
 [node name="Back" type="Button" parent="CanvasLayer"]
-offset_left = 515.00006
-offset_top = 576.00006
-offset_right = 823.00006
-offset_bottom = 674.00006
-scale = Vector2(0.4, 0.4)
-icon = ExtResource("5_1c8i8")
+offset_left = 439.0
+offset_top = 563.0
+offset_right = 697.0
+offset_bottom = 610.0
+icon = ExtResource("5_2wggh")
+icon_alignment = 1
 metadata/_edit_use_anchors_ = true

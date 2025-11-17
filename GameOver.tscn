@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cchpf4ffo6gjc" path="res://Sprites/game-over.jpg" id="1_40baj"]
 [ext_resource type="Script" uid="uid://kl6vltqp52bs" path="res://GameOver.gd" id="1_jywu3"]
-[ext_resource type="Texture2D" uid="uid://col3hgksclg1i" path="res://Sprites/quit (2).png" id="2_a1htc"]
 [ext_resource type="AudioStream" uid="uid://115isaeot5mh" path="res://music/click-button.mp3" id="3_eksk4"]
 [ext_resource type="AudioStream" uid="uid://kjjs8rythkx5" path="res://music/menu-button-88360.mp3" id="4_xl4ts"]
+[ext_resource type="Texture2D" uid="uid://bqp5i8ri1uyi1" path="res://Sprites/return.png" id="5_jywu3"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_jywu3")
@@ -24,9 +24,8 @@ stream = ExtResource("4_xl4ts")
 volume_db = -20.0
 
 [node name="Back" type="Button" parent="CanvasLayer"]
-offset_left = 515.0
-offset_top = 515.0
-offset_right = 823.0
-offset_bottom = 613.0
-scale = Vector2(0.4, 0.4)
-icon = ExtResource("2_a1htc")
+offset_left = 450.0
+offset_top = 507.0
+offset_right = 708.0
+offset_bottom = 554.0
+icon = ExtResource("5_jywu3")
